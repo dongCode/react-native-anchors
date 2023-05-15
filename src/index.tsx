@@ -421,20 +421,22 @@ function FlatList<T = any>({
   );
 }
 
-function ScrollTo({
-  target,
-  onPress,
-  options,
-  onRequestScrollTo,
-  ...props
-}: {
+type ScrollToProps = {
   children?: ReactNode;
   target: Anchor;
   options?: ScrollToOptions;
   onRequestScrollTo?: (
     props: Unpromisify<ReturnType<ReturnType<typeof useScrollTo>['scrollTo']>>
   ) => void;
-} & ComponentProps<typeof Pressable>) {
+} & ComponentProps<typeof Pressable>;
+
+function ScrollTo({
+  target,
+  onPress,
+  options,
+  onRequestScrollTo,
+  ...props
+}: ScrollToProps) {
   const { scrollTo } = useScrollTo();
 
   return (
